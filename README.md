@@ -1,26 +1,28 @@
 # Udagram Microservices
 > Udacity Cloud Developer Nanodegree
 
-## Get Started
+
+## Getting Started
+### Prerequisites
 [Docker](https://docs.docker.com/docker-for-windows/install/)  
 [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html)  
 [Eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)  
 [AWS-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)  
 [Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)  
 
-### Requirements
+### Installation
 `docker --version`  
 `aws --version`  
 `eksctl version`  
 `kubectl version --short --client`  
 `aws-iam-authenticator version`  
 
-![SetupInstalltion](screenshots/SetupInstalltion.png)
+![SetupInstalltion](screenshots/SetupInstalltion.png)  
 
 ### Setup Environment Variables
-open 
-`open ~/.profile` 
+open your bash profile to store your application variables at OS level to use them within and across applications:  `open ~/.profile`
 
+copy and paste the bash scripts bellow with your values:
 ```
 export POSTGRESS_USERNAME=your postgress username;
 export POSTGRESS_PASSWORD=your postgress password;
@@ -31,7 +33,7 @@ export AWS_PROFILE=your aws profile;
 export AWS_BUCKET=your aws bucket name;
 export JWT_SECRET=your jwt secret;
 ```
-
+to load your application environment variables automatically whenever a new interactive shell is started:
 `source ~/.profile`  
 
 
