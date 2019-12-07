@@ -47,7 +47,7 @@ Build the images:
 
 ![SetupInstalltion](screenshots/BuildImages.png)  
   
-List your Images to check if they have been built:
+List your docker images to check if they have been built:
 `docker images`  
 
 ![SetupInstalltion](screenshots/ListImages.png)  
@@ -60,17 +60,17 @@ Run your docker containers:
 To exit run `control + C`
 
 
-Push the images:
+Push your docker images:
  `dcoker-compose -f docker-compose-build.yaml push`  
 
 ![SetupInstalltion](screenshots/PushImages.png)  
 
-Check your Docker Hub, if the Images reach on there:
+Check your Docker Hub, if the images reach on there:
 
 ![SetupInstalltion](screenshots/DockerHub.png)  
 
 
-### Creating a Kubernetes cluster on Amazon EKS with eksctl
+### Create a Kubernetes cluster on Amazon EKS with eksctl
 copy and paste the bash scripts bellow with your cluster name and configration variables:
 
 ```
@@ -87,3 +87,32 @@ eksctl create cluster \
 
 ![SetupInstalltion](screenshots/ClusterCreation.png) 
  
+ ### Create Kubernetes components (configmaps and secrets)
+
+ Encrypt your database username and password using base64 using the following commands:
+- `echo POSTGRESS_PASSWORD | base64`
+- `echo POSTGRESS_USERNAME | base64`
+Encrypt your aws file using base64 using the following commands:
+- `cat ~/.aws/credentials | base64`
+Add these values in the appropriate places in your `env-secret.yaml`, `aws-secret.yaml`, and `env-configmap.yaml`.
+
+ ### Setup Kubernetes Environment
+ Load secret files:
+- `kubectl apply -f aws-secret.yaml
+- `kubectl apply -f env-secret.yaml`
+- `kubectl apply -f env-configmap.yaml`
+Apply all other yaml files:
+- `kubectl apply -f .`
+
+![SetupInstalltion](screenshots/SetupKubernetesComponents.png) 
+
+### Check your pods status
+
+`kubectl get all`  
+
+![PodsStatus](screenshots/PodsStatus.png) 
+
+
+
+
+
