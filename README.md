@@ -1,23 +1,35 @@
 # Udagram Microservices
 > Udacity Cloud Developer Nanodegree
 
+## Get Started
+[Docker](https://docs.docker.com/docker-for-windows/install/)  
+[AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html)  
+[Eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)  
+[AWS-iam-authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)  
+[Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)  
+
+### Requirements
 `docker --version`  
 `aws --version`  
 `eksctl version`  
 `kubectl version --short --client`  
 `aws-iam-authenticator version`  
 
-`code ~/.profile`  
+![SetupInstalltion](screenshots/SetupInstalltion.png)
+
+### Setup Environment Variables
+open 
+`open ~/.profile` 
 
 ```
-export POSTGRESS_USERNAME=udagramdatabase;
-export POSTGRESS_PASSWORD=M123456789;
-export POSTGRESS_DB=udagramdatabase;
-export POSTGRESS_HOST=udagramdatabase.cgremtq7zbcl.eu-west-3.rds.amazonaws.com;
-export AWS_REGION=eu-west-3;
-export AWS_PROFILE=default;
-export AWS_BUCKET=udagram-s3-p4;
-export JWT_SECRET=YouAreAwesome;
+export POSTGRESS_USERNAME=your postgress username;
+export POSTGRESS_PASSWORD=your postgress password;
+export POSTGRESS_DB=your postgress database;
+export POSTGRESS_HOST=your postgress host;
+export AWS_REGION=your aws region;
+export AWS_PROFILE=your aws profile;
+export AWS_BUCKET=your aws bucket name;
+export JWT_SECRET=your jwt secret;
 ```
 
 `source ~/.profile`  
