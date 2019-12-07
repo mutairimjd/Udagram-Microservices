@@ -20,7 +20,10 @@
 ![SetupInstalltion](screenshots/SetupInstalltion.png)  
 
 ### Setup Environment Variables
-open your bash profile to store your application variables at OS level to use them within and across applications:  `open ~/.profile`
+open your bash profile to store your application variables at OS level to use them within and across applications: 
+```
+open ~/.profile
+```
 
 copy and paste the bash scripts bellow with your values:
 ```
@@ -33,16 +36,26 @@ export AWS_PROFILE=your aws profile;
 export AWS_BUCKET=your aws bucket name;
 export JWT_SECRET=your jwt secret;
 ```
-to load your application environment variables automatically whenever a new interactive shell is started:
-`source ~/.profile`  
+source your .profile to execute your bash scripts automatically whenever a new interactive shell is started:
+```
+source ~/.profile
+```  
 
-
+### Setup docker enviroment
 Build the images: 
 `docker-compose -f docker-compose-build.yaml build --parallel`  
+![SetupInstalltion](screenshots/BuildImages.png)  
+  
+List your Images to check if they have been built:
 `docker images`  
+![SetupInstalltion](screenshots/ListImages.png)  
 
-Run the containers: 
-`docker-compose up`  to exit --> `control + C`   
+Run your docker containers: 
+`docker-compose up`  
+![SetupInstalltion](screenshots/RunContainers.png)  
+
+To exit run `control + C`
+
 
 Push the images:
  `dcoker-compose -f docker-compose-build.yaml push`  
