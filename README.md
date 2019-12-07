@@ -44,14 +44,17 @@ source ~/.profile
 ### Setup docker enviroment
 Build the images: 
 `docker-compose -f docker-compose-build.yaml build --parallel`  
+
 ![SetupInstalltion](screenshots/BuildImages.png)  
   
 List your Images to check if they have been built:
 `docker images`  
+
 ![SetupInstalltion](screenshots/ListImages.png)  
 
 Run your docker containers: 
 `docker-compose up`  
+
 ![SetupInstalltion](screenshots/RunContainers.png)  
 
 To exit run `control + C`
@@ -60,4 +63,27 @@ To exit run `control + C`
 Push the images:
  `dcoker-compose -f docker-compose-build.yaml push`  
 
+![SetupInstalltion](screenshots/PushImages.png)  
+
+Check your Docker Hub, if the Images reach on there:
+
+![SetupInstalltion](screenshots/DockerHub.png)  
+
+
+### Creating a Kubernetes cluster on Amazon EKS with eksctl
+copy and paste the bash scripts bellow with your cluster name and configration variables:
+
+```
+eksctl create cluster \ 
+--name "ClusterName" \
+--version 1.14 \
+--nodegroup-name standard-workers \
+--node-type t3.medium \
+--nodes 3 \
+--nodes-min 1 \
+--nodes-max 4 \
+--node-ami auto
+```
+
+![SetupInstalltion](screenshots/ClusterCreation.png) 
  
