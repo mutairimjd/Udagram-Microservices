@@ -1,9 +1,10 @@
 # Udagram Microservices
 > Udacity Cloud Developer Nanodegree
 
-
 ## Getting Started
+
 ### Prerequisites
+You need to install:
 [Docker](https://docs.docker.com/docker-for-windows/install/)  
 [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html)  
 [Eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)  
@@ -11,6 +12,7 @@
 [Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)  
 
 ### Installation
+Test that your installation was Successful with the following commands:
 `docker --version`  
 `aws --version`  
 `eksctl version`  
@@ -20,12 +22,12 @@
 ![SetupInstalltion](screenshots/SetupInstalltion.png)  
 
 ### Setup Environment Variables
-open your bash profile to store your application variables at OS level to use them within and across applications: 
+Open your bash profile to store your application variables at OS level to use them within and across applications: 
 ```
 open ~/.profile
 ```
 
-copy and paste the bash scripts bellow with your values:
+Copy and Paste the bash scripts bellow with your values:
 ```
 export POSTGRESS_USERNAME=your postgress username;
 export POSTGRESS_PASSWORD=your postgress password;
@@ -36,26 +38,26 @@ export AWS_PROFILE=your aws profile;
 export AWS_BUCKET=your aws bucket name;
 export JWT_SECRET=your jwt secret;
 ```
-source your .profile to execute your bash scripts automatically whenever a new interactive shell is started:
+Source your .profile to execute your bash scripts automatically whenever a new interactive shell is started:
 ```
 source ~/.profile
 ```  
 
-### Setup docker enviroment
+### Setup Docker Enviroment
 Build the images: 
 `docker-compose -f docker-compose-build.yaml build --parallel`  
 
-![SetupInstalltion](screenshots/BuildImages.png)  
+![BuildImages](screenshots/BuildImages.png)  
   
 List your docker images to check if they have been built:
 `docker images`  
 
-![SetupInstalltion](screenshots/ListImages.png)  
+![ListImages](screenshots/ListImages.png)  
 
 Run your docker containers: 
 `docker-compose up`  
 
-![SetupInstalltion](screenshots/RunContainers.png)  
+![RunContainers](screenshots/RunContainers.png)  
 
 To exit run `control + C`
 
@@ -63,15 +65,15 @@ To exit run `control + C`
 Push your docker images:
  `dcoker-compose -f docker-compose-build.yaml push`  
 
-![SetupInstalltion](screenshots/PushImages.png)  
+![PushImages](screenshots/PushImages.png)  
 
 Check your Docker Hub, if the images reach on there:
 
-![SetupInstalltion](screenshots/DockerHub.png)  
+![DockerHub](screenshots/DockerHub.png)  
 
 
-### Create a Kubernetes cluster on Amazon EKS with eksctl
-copy and paste the bash scripts bellow with your cluster name and configration variables:
+### Create a Kubernetes Cluster on Amazon EKS with eksctl
+Copy and Paste the bash scripts bellow with your cluster name and configration variables:
 
 ```
 eksctl create cluster \ 
@@ -85,9 +87,10 @@ eksctl create cluster \
 --node-ami auto
 ```
 
-![SetupInstalltion](screenshots/ClusterCreation.png) 
- 
- ### Create Kubernetes components (configmaps and secrets)
+![ClusterCreation](screenshots/ClusterCreation.png) 
+
+
+ ### Create Kubernetes Components (Configmaps and Secrets)
 
 Encrypt your database username and password using base64 using the following commands:
 - `echo POSTGRESS_PASSWORD | base64`  
@@ -104,18 +107,33 @@ Add these values in the appropriate places in your `env-secret.yaml`, `aws-secre
 Apply all other yaml files:
 - `kubectl apply -f .`
 
-![SetupInstalltion](screenshots/SetupKubernetesComponents.png) 
+![SetupKubernetesComponents](screenshots/SetupKubernetesComponents.png) 
 
-### Check your pods status
+The application is monitored by Amazon CloudWatch, Amazon EKS control plane logging provides audit and diagnostic logs directly from the Amazon EKS control plane to CloudWatch Logs in your account. These logs make it easy for you to secure and run your cluster.
+
+To Enabling Control Plane Logs:
+1. Open the [Amazon-EKS](https://console.aws.amazon.com/eks/home#/clusters) console.
+2. Choose the name of the cluster to display your cluster information.
+3. Under Logging, choose Update.
+4. For each individual log type, choose whether the log type should be Enabled or Disabled. By default, each log type is Disabled.
+5. Choose Update to finish.
+
+![EKS](screenshots/EKS.png)
+
+![CloudWatch](screenshots/CloudWatch.png) 
+
+![CloudWatchLogs](screenshots/CloudWatchLogs.png)
+
+### Check your Pods Status
 
 `kubectl get all`  
 
 ![PodsStatus](screenshots/PodsStatus.png) 
 
-### Connect the Services with port forwarding
+### Connect the Services with Port Forwarding
 
-Use port forwarding to the frontend and reverse proxy services:
-> Note: The port forwarding must be done in Separate terminals, to runn both servises at the same time.
+Use Port Forwarding to the Frontend and Reverse Proxy services:
+> Note: The port forwarding must be done in Separate terminals, to run both servises at the same time.
 
 `kubectl port-forward service/frontend 8100:8100`  
 `kubectl port-forward service/reverseproxy 8080:8080`  
@@ -125,7 +143,7 @@ Use port forwarding to the frontend and reverse proxy services:
 ### CI/CD with TravisCL
 - Sign up for [TravisCL](https://travis-ci.com) and connect your Github application repository to TrivisCL.
 - Add `.travis.yml` file to the root of the application.
-- Copy and paste the following code your `.travis.yml` file:
+- Copy and paste the following code into your `.travis.yml` file:
 ```
 language: minimal
 
