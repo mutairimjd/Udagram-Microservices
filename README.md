@@ -2,9 +2,13 @@
 > Udacity Cloud Developer Nanodegree
 
 ## Getting Started
+Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
+
+## Motivation
+To design, deploy and operate a cloud native photo sharing application.
 
 ### Prerequisites
-You need to install:
+You need to install:  
 [Docker](https://docs.docker.com/docker-for-windows/install/)  
 [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html)  
 [Eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)  
