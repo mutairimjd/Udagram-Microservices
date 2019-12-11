@@ -16,7 +16,7 @@ You need to install:
 [Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)  
 
 ### Installation
-Test that your installation was Successful with the following commands:
+Test that your installation was Successful with the following commands:  
 `docker --version`  
 `aws --version`  
 `eksctl version`  
@@ -99,15 +99,19 @@ eksctl create cluster \
 Encrypt your database username and password using base64 using the following commands:
 - `echo POSTGRESS_PASSWORD | base64`  
 - `echo POSTGRESS_USERNAME | base64`  
+
 Encrypt your aws file using base64 using the following commands:
 - `cat ~/.aws/credentials | base64`  
+
 Add these values in the appropriate places in your `env-secret.yaml`, `aws-secret.yaml`, and `env-configmap.yaml`.
 
  ### Setup Kubernetes Environment
- Load secret files:
+
+Load secret files:
 - `kubectl apply -f aws-secret.yaml`
 - `kubectl apply -f env-secret.yaml`
 - `kubectl apply -f env-configmap.yaml`  
+
 Apply all other yaml files:
 - `kubectl apply -f .`
 
